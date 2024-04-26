@@ -42,6 +42,8 @@ cd leetcode-150-interview-subject
 
 [2.移除元素](2removeElements)
 
+[3.删除有序数组中的重复项](3removeDuplicates)
+
 ## 如何贡献
 
 如果你想贡献题解或改进现有的解答，请遵循以下步骤：
