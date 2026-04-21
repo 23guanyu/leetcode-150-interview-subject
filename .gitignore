@@ -7,3 +7,7 @@
 # Ignore private cookies files for video download
 cookies.txt
 *.cookies.txt
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
