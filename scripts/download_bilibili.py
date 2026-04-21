@@ -45,7 +45,10 @@ def main() -> int:
     args = parser.parse_args()
 
     if shutil.which("yt-dlp") is None:
-        print("Error: yt-dlp not found in PATH. Please install yt-dlp first.", file=sys.stderr)
+        print(
+            "Error: yt-dlp not found in PATH. Install it with: python -m pip install -U yt-dlp",
+            file=sys.stderr,
+        )
         return 1
 
     output_dir = Path(args.output_dir)
