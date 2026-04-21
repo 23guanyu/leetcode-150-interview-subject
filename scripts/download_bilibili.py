@@ -56,7 +56,7 @@ def main() -> int:
 
     command = build_command(args.url, output_dir, args.cookies)
     print("Running:", " ".join(command))
-    return subprocess.run(command).returncode
+    return subprocess.run(command, check=False).returncode
 
 
 if __name__ == "__main__":
