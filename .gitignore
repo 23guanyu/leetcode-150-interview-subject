@@ -3,3 +3,7 @@
 
 # Ignore output files
 *.out
+
+# Ignore private cookies files for video download
+cookies.txt
+*.cookies.txt
