@@ -44,6 +44,13 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.cookies and not Path(args.cookies).is_file():
+        print(f"Error: cookies file not found: {args.cookies}", file=sys.stderr)
+        return 1
+
     if shutil.which("yt-dlp") is None:
         print(
             "Error: yt-dlp not found in PATH. Install it with: python -m pip install -U yt-dlp",
@@ -51,12 +58,12 @@ def main() -> int:
         )
         return 1
 
-    output_dir = Path(args.output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
-
     command = build_command(args.url, output_dir, args.cookies)
     print("Running:", " ".join(command))
-    return subprocess.run(command, check=False).returncode
+    result = subprocess.run(command, check=False)
+    if result.returncode != 0:
+        print("Download failed. See yt-dlp error output above.", file=sys.stderr)
+    return result.returncode
 
 
 if __name__ == "__main__":
